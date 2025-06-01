@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Khitanan M Farelio Lusianto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Created By Naufal Dinta - naufaldintaa@gmail.com" />
+  <meta name="author" content="Created By Naufal Dinta - naufaldintaa@gmail.com" />
+
+  <link href='https://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Estonia" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+  <script src="js/simplyCountdown.js"></script>
+
+  <!-- Theme style  -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="css/animate.css">
+
+  <link rel="stylesheet" href="css/navfixing.css">
+
+</head>
+<body>
+  <div id="page">
+    <audio id="song" loop>
+      <source src="https://invidream.com/wp-content/uploads/2023/03/Marry-Your-Daughter-Brian-McKnight.mp3"/>
+    </audio>
+
+    <!--Floating button-->
+    <div class="nav">
+      <div class="nav-tab">
+        <div class="nav-list">
+          <div class="nav-item">
+            <a href="#">
+              <i class="fa fa-home icon"></i>
+              <p class="note">Home</p>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#">
+              <i class="fa fa-envelope-open icon"></i>
+              <p class="note">Undangan</p>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#">
+              <i class="fa fa-calendar icon"></i>
+              <p class="note">Event</p>
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#">
+              <i class="fa fa-comment icon"></i>
+              <p class="note">Doa</p>
+            </a>
+          </div>
+        </div>
+      </divc>
+    </div>
+  </div>
+<script>
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0)
+  };
+  disableScrolling();
+  document.body.style.overflowY = "hidden";
+  document.body.style.heigth = "100vh";
+
+  //Script Custom Nama Tamu //
+  var textElement = document.getElementById('namatamu');
+  var urlParams = new URLSearchParams(window.location.search);
+  var newText = "Tamu Undangan";
+
+  if (urlParams.has('to')) {
+    var toValue = urlParams.get('to');
+    newText = newText.replace(/Tamu Undangan/g, toValue);
+  }
+
+  textElement.innerHTML = newText;
+  //-----------------------//
+
+  // setup date countdown
+  day = 28; month = 6; year = 2025;
+	hour = 11; minute = 0;
+	var d = new Date(year, month, day, hour, minute, 0, 0);
+
+	// default example countdown
+	simplyCountdown('.simply-countdown-khitan', {
+		year: d.getFullYear(),
+    month: d.getMonth(),
+    day: d.getDate(),
+    hours: d.getHours(),
+    minutes: 0, // Default is 0 [0-59] integer
+    seconds: 0, // Default is 0 [0-59] integer
+    countUp: true
+    // enableUtc: true
+	});
+
+  //-----------------------//
+
+  // setting open tamu undangan
+  document.getElementById("open-invitation").onclick = function () {
+		$('#overlay').addClass('hide-overlay');
+    document.body.style.overflowY = "unset";
+
+    enableScrolling();
+    playAudio()
+  };
+
+  function playAudio() {
+    var isYT = false;
+    if (document.body.contains(document.getElementById("song"))) {
+      document.getElementById("song").play();
+       isYT = false;
+    } else {
+      isYT = true;
+      player.playVideo();
+    }
+  }
+
+  // scroling
+  function disableScrolling() {
+    var x = window.scrollX;
+    var y = window.scrollY;
+
+    window.onscroll = function () {
+      window.scrollTo(0, 0)
+    }
+  }
+
+  function enableScrolling() {
+    window.onscroll = function () {
+    }
+  }
+
+  function scrollToElement(el) {
+		$("html, body").animate({ scrollTop: $(`#${el}`).offset().top }, 10);
+	}
+</script>
+</body>
+</html>
